@@ -24,7 +24,7 @@ Maybe you need to change the version of some libraries depending on your servers
 
 ## Data Preparation
 
-You need to download the data from Google Drive[[data](https://arxiv.org/abs/2110.08247)] and save them into  `/data`.
+You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] and save them into  `/data`. 
 
 ## Experiments
 
@@ -46,5 +46,5 @@ To conduct attack experiments via ROCKET:
 rocket.sh
 ```
 
-
+## Citation
 
