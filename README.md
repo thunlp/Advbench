@@ -9,7 +9,7 @@ In this paper, we rethink the research paradigm of textual adversarial samples i
 We discuss the deficiencies in previous work and propose our suggestions that the research on the **S**ecurity-**o**riented **ad**versarial **NLP (SoadNLP) should:**
 (1) evaluate their methods on security tasks to demonstrate the real-world concerns;
 (2) consider real-world attackers' goals, instead of developing impractical methods. 
-To this end, we first collect, process, and release a security datasets collection **benchmark**. Then, we reformalize the task and adjust the emphasis on different goals in SoadNLP. Next, we propose a simple method based on heuristic rules that can easily fulfill the actual adversarial goals to simulate real-world attack methods.We conduct experiments on both the attack and the defense sides on Advbenchmark. 
+To this end, we first collect, process, and release a security datasets collection **advbench**. Then, we reformalize the task and adjust the emphasis on different goals in SoadNLP. Next, we propose a simple method based on heuristic rules that can easily fulfill the actual adversarial goals to simulate real-world attack methods.We conduct experiments on both the attack and the defense sides on Advbenchmark. 
 Experimental results show that our method has higher practical value, indicating that the research paradigm in SoadNLP may start from our new benchmark.
 
 <img src="figs/main.png" alt="main" style="zoom:50%;" />
@@ -24,7 +24,9 @@ Maybe you need to change the version of some libraries depending on your servers
 
 ## Data Preparation
 
-You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] and save them into  `/data`. 
+You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] and save them into  `/data`.  
+
+We provide the original dataset (ori_dataset), the processed dataset (rel_dataset) and the experimental dataset (exp_dataset). If you just want to reproduce the experiment, just download the exp_dataset. If you want to use our benchmark for further research, please download rel_dataset.
 
 ## Experiments
 
