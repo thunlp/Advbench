@@ -4,7 +4,6 @@ Code and data of the EMNLP 2022 paper **"Why Should Adversarial Perturbations be
 
 ## Overview
 
-Textual adversarial samples play important roles in multiple subfields of NLP research, including security, evaluation, explainability, and data augmentation.However, most work mixes all these roles, obscuring the problem definitions and research goals of the security role that aims to reveal the practical concerns of NLP models.
 In this paper, we rethink the research paradigm of textual adversarial samples in security scenarios.
 We discuss the deficiencies in previous work and propose our suggestions that the research on the **S**ecurity-**o**riented **ad**versarial **NLP (SoadNLP) should:**
 (1) evaluate their methods on security tasks to demonstrate the real-world concerns;
