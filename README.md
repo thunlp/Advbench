@@ -25,23 +25,23 @@ Maybe you need to change the version of some libraries depending on your servers
 
 You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] and save them into  `/data`.  
 
-We provide the original dataset (ori_dataset), the processed dataset (rel_dataset) and the experimental dataset (exp_dataset). If you just want to reproduce the experiment, just download the exp_dataset. If you want to use our benchmark for further research, please download rel_dataset.
+We provide the original dataset (**ori_dataset**), the processed dataset (**rel_dataset)** and the experimental dataset (**exp_dataset**). If you just want to reproduce the experiment, just download the **exp_dataset**. If you want to use our benchmark for further research, please download **rel_dataset**.
 
 ## Experiments
 
-First, you should fine-tune the pre-trained model on our  security datasets collection **Advbench**.
+First, you should fine-tune the pre-trained model on our security datasets collection **Advbench**.
 
 ```
 train.sh
 ```
 
-Then, to conduct the baseline attack experiments via our settings:
+Then, to conduct the baseline attack experiments in our settings:
 
 ```
 base_attack.sh
 ```
 
-To conduct attack experiments via ROCKET:
+To conduct attack experiments via ROCKET in our settings:
 
 ```
 rocket.sh
