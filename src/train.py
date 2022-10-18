@@ -1,3 +1,7 @@
+# This file is the pipeline of fine-tuing
+# Author: Hongcheng Gao, Yangyi Chen
+# Date: 2022-10-18 
+
 import argparse
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch

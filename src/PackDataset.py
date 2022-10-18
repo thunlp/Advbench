@@ -1,3 +1,7 @@
+# This file is used for data processing
+# Author: Hongcheng Gao, Yangyi Chen
+# Date: 2022-10-18 
+
 import torch
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.utils.rnn import pad_sequence
