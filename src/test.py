@@ -12,7 +12,7 @@ base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
 
 def load_data(data_name,type):
-    file_path = data_path+data_name
+    file_path = data_path+data_name+"/"
     data = pd.read_csv(file_path+type+".csv")
     p_data = []
     for i in range(len(data)):

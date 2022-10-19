@@ -6,3 +6,5 @@ transformers>=4.0.0
 torch>=1.5.1
 OpenAttack
 pandas
+tensorflow
+tensorflow_hub

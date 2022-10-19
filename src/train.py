@@ -105,9 +105,9 @@ if __name__ == '__main__':
 
     tokenizer = AutoTokenizer.from_pretrained(bert_type)
     model = AutoModelForSequenceClassification.from_pretrained(bert_type, num_labels=labels)
-    # if torch.cuda.is_available():
-    #     model = nn.DataParallel(model.cuda())
-    model = model.cuda()
+    if torch.cuda.is_available():
+        model = nn.DataParallel(model.cuda())
+    # model = model.cuda()
     orig_train = load_data(dataset_name,"train")
     orig_test = load_data(dataset_name,"dev")
 

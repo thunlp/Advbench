@@ -12,6 +12,9 @@ import pandas as pd
 from datasets import Dataset
 import os
 import OpenAttack
+from tqdm import tqdm
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 # base_path = os.path.dirname(os.getcwd ()) 
@@ -19,7 +22,7 @@ base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
 
 def load_data(data_name,type):
-    file_path = data_path+data_name
+    file_path = data_path+data_name+"/"
     data = pd.read_csv(file_path+type+".csv")
     p_data = []
     for i in range(len(data)):

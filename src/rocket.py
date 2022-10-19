@@ -1,6 +1,6 @@
 import argparse
 from ast import arg
-import dataset
+import datasets
 import torch
 import torch.nn as nn
 import numpy as np
@@ -17,6 +17,8 @@ import pandas as pd
 import random
 random.seed(714)
 import os
+import nltk
+nltk.download('stopwords')
 # base_path = os.path.dirname(os.getcwd ()) 
 base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
