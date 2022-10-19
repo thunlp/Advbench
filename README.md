@@ -21,6 +21,14 @@ pip install -r requirements.txt
 
 Maybe you need to change the version of some libraries depending on your servers.
 
+You should also create the file data, model and output to respectively store dataset, fine-tuned model and adversarial output dataset.
+```
+cd Advbench
+mkdir data
+mkdir model
+mkdir output
+```
+
 ## Data Preparation
 
 You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] .

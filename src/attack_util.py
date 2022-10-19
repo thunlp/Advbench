@@ -1,8 +1,6 @@
 import random
 
 
-
-
 def insert_long_distractor(sentence,begsl,endsl,ch):
     # insert_pool = [str(i) for i in list(range(0,10))]  + ['!','&','%','$','#']
     # k = 10
