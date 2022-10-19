@@ -1,6 +1,6 @@
 #!bash
-dataset_name=('LUN' 'satnews' "amazon_lb" "CGFake" "HSOL" "jigsaw" "EDENCE" "FAS" "assassin" "enron") 
-attakcer_name=("pso"  "textfooler"  "pwws"  "bert" "deep"  "deep25" "deep100"  "pso100")
+dataset_name=('LUN' 'satnews' 'amazon_lb' 'CGFake' 'HSOL' 'jigsaw' 'EDENCE' 'FAS' 'assassin' 'enron') 
+attacker_name=('pso' 'textfooler' 'pwws' 'bert' 'deep' 'deep25' 'deep100' 'pso100')
 for i in {0..9}
 do
     for j in {0..7}

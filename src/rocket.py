@@ -1,3 +1,5 @@
+import nltk
+nltk.download('stopwords')
 import argparse
 from ast import arg
 import datasets
@@ -17,8 +19,6 @@ import pandas as pd
 import random
 random.seed(714)
 import os
-import nltk
-nltk.download('stopwords')
 # base_path = os.path.dirname(os.getcwd ()) 
 base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
@@ -169,9 +169,6 @@ def attack(model,orig_test,tokenizer,ATTACK_ITER,task_name):
                     else:
                         word_pos[p] = random.choice(list(range(0, maxsl)))
 
-                    
-                    
-
 
                 for e in range(attack_batchsize*epoch+int(0.05*len(cache_pos_li))): #2  #5
 
@@ -226,7 +223,7 @@ def attack(model,orig_test,tokenizer,ATTACK_ITER,task_name):
     print(asn)
     name = ['origin','attack',"querytime"]
     save_data = pd.DataFrame(columns=name,data=success_list)
-    save_data.to_csv(base_path+"output/"+task_name+'rocket.csv')
+    save_data.to_csv(base_path+"/output/"+task_name+'_rocket.csv')
     
     print('ASR: ',asn / len(correct_samples))
 
