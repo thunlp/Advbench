@@ -11,7 +11,9 @@ import torch.nn as nn
 import transformers
 import pandas as pd
 import os
-base_path = os.path.dirname(os.getcwd ()) 
+from tqdm import tqdm
+# base_path = os.path.dirname(os.getcwd ()) 
+base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
 
 def load_data(data_name,type):
@@ -47,7 +49,7 @@ def train():
         for epoch in range(EPOCHS):
             model.train()
             total_loss = 0
-            for padded_text, attention_masks, labels in train_loader:
+            for padded_text, attention_masks, labels in tqdm(train_loader):
                 if torch.cuda.is_available():
                     padded_text, attention_masks, labels = padded_text.cuda(), attention_masks.cuda(), labels.cuda()
                 output = model(padded_text, attention_masks).logits
@@ -76,7 +78,7 @@ def train():
     test_acc = evaluaion(test_loader)
     print('*' * 89)
     print('finish all, test acc: {}'.format(test_acc))
-    model_path = base_path+"model/"
+    model_path = base_path+"/model/"
     torch.save(model, model_path+dataset_name)
 
 
@@ -97,20 +99,21 @@ if __name__ == '__main__':
     dataset_name = args.dataset
     bert_type = args.bert_type
     labels = args.labels
-    EPOCHS = 3
+    EPOCHS = 2
 
 
 
     tokenizer = AutoTokenizer.from_pretrained(bert_type)
     model = AutoModelForSequenceClassification.from_pretrained(bert_type, num_labels=labels)
-    if torch.cuda.is_available():
-        model = nn.DataParallel(model.cuda())
+    # if torch.cuda.is_available():
+    #     model = nn.DataParallel(model.cuda())
+    model = model.cuda()
     orig_train = load_data(dataset_name,"train")
     orig_test = load_data(dataset_name,"dev")
 
     pack_util = packDataset_util(bert_type)
-    train_loader = pack_util.get_loader(orig_train, shuffle=True, batch_size=32)
-    test_loader = pack_util.get_loader(orig_test, shuffle=False, batch_size=32)
+    train_loader = pack_util.get_loader(orig_train, shuffle=True, batch_size=8)
+    test_loader = pack_util.get_loader(orig_test, shuffle=False, batch_size=16)
 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5, weight_decay=0)

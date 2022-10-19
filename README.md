@@ -23,9 +23,14 @@ Maybe you need to change the version of some libraries depending on your servers
 
 ## Data Preparation
 
-You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] and save them into  `/data`.  
+You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] .
 
-We provide the original dataset (**ori_dataset**), the processed dataset (**rel_dataset)** and the experimental dataset (**exp_dataset**). If you just want to reproduce the experiment, just download the **exp_dataset**. If you want to use our benchmark for further research, please download **rel_dataset**.
+We provide the original dataset (**ori_dataset**), the processed dataset (**rel_dataset)**  the experimental dataset (**exp_dataset**) and a pure compression package for experiments. If you just want to reproduce the experiment, you shold download the **data.zip** and save it into `/data`, then unpakage the zip file with the following command:
+```
+unzip data.zip
+```
+
+If you want to use our benchmark for further research, please download **rel_dataset**. If you want to use raw dataset to process the data yourself, you can download **ori_dataset**. **Exp_dataset** is just an uncompressed format of **data.zip** .
 
 ## Experiments
 

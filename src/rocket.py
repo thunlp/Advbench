@@ -17,7 +17,8 @@ import pandas as pd
 import random
 random.seed(714)
 import os
-base_path = os.path.dirname(os.getcwd ()) 
+# base_path = os.path.dirname(os.getcwd ()) 
+base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
 
 def load_data(data_name,type):
@@ -235,7 +236,7 @@ def pipe(dataset_name,attack_iter):
 
     bert_type = "bert-base-uncased"
     tokenizer = AutoTokenizer.from_pretrained(bert_type)
-    model_path = base_path+"model/"
+    model_path = base_path+"/model/"
     model = torch.load(model_path+dataset_name)
     if torch.cuda.is_available():
         model = nn.DataParallel(model.cuda())

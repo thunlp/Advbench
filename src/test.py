@@ -7,7 +7,8 @@ import torch.nn as nn
 import transformers
 import pandas as pd
 import os
-base_path = os.path.dirname(os.getcwd ()) 
+# base_path = os.path.dirname(os.getcwd ()) 
+base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
 
 def load_data(data_name,type):
@@ -47,7 +48,7 @@ def test():
     test_acc = evaluaion(test_loader)
     print('*' * 89)
     print('finish all, test acc: {}'.format(test_acc))
-    model_path = base_path+"model/"
+    model_path = base_path+"/model/"
     torch.save(model, model_path+dataset_name)
 
 

@@ -12,9 +12,10 @@ import pandas as pd
 from datasets import Dataset
 import os
 import OpenAttack
-from tqdm import tqdm
 
-base_path = os.path.dirname(os.getcwd ()) 
+
+# base_path = os.path.dirname(os.getcwd ()) 
+base_path = os.path.abspath('.')
 data_path = base_path +"/data/"
 
 def load_data(data_name,type):
@@ -98,7 +99,7 @@ if __name__ == '__main__':
 
 
     # model = torch.load(model_path, map_location='cpu').module
-    model_path = base_path+"model/"
+    model_path = base_path+"/model/"
     model = torch.load(model_path+dataset_name)
     tokenizer = AutoTokenizer.from_pretrained(bert_type)
 
