@@ -21,17 +21,17 @@ pip install -r requirements.txt
 
 Maybe you need to change the version of some libraries depending on your servers.
 
-You should also create the file data, model and output to respectively store dataset, fine-tuned model and adversarial output dataset.
-```
-cd Advbench
-mkdir data
-mkdir model
-mkdir output
-```
 
 ## Data Preparation
 
-You need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] .
+First, you need to create the file `data` to store dataset:
+
+```
+cd Advbench
+mkdir data
+```
+
+Then you need to download the data from Google Drive[[data](https://drive.google.com/drive/folders/1_2q2282ZEoE_iPg8Q4ILGeB_aAkcP43v?usp=sharing)] .
 
 We provide the original dataset (**ori_dataset**), the processed dataset (**rel_dataset)**  the experimental dataset (**exp_dataset**) and a pure compression package for experiments. If you just want to reproduce the experiment, you shold download the **data.zip** and save it into `/data`, then unpakage the zip file with the following command:
 ```
@@ -42,13 +42,19 @@ If you want to use our benchmark for further research, please download **rel_dat
 
 ## Experiments
 
-First, you should fine-tune the pre-trained model on our security datasets collection **Advbench**.
+First, you need to create the file `model` and `output` to respectively store fine-tuned model and adversarial output dataset.
+```
+mkdir model
+mkdir output
+```
+
+Then you should fine-tune the pre-trained model on our security datasets collection **Advbench**.
 
 ```
 bash scripts/train.sh
 ```
 
-Then, to conduct the baseline attack experiments in our settings:
+To conduct the baseline attack experiments in our settings:
 
 ```
 bash scripts/base_attack.sh
