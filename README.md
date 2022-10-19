@@ -32,19 +32,19 @@ We provide the original dataset (**ori_dataset**), the processed dataset (**rel_
 First, you should fine-tune the pre-trained model on our security datasets collection **Advbench**.
 
 ```
-train.sh
+bash scripts/train.sh
 ```
 
 Then, to conduct the baseline attack experiments in our settings:
 
 ```
-base_attack.sh
+bash scripts/base_attack.sh
 ```
 
 To conduct attack experiments via ROCKET in our settings:
 
 ```
-rocket.sh
+bash scripts/rocket.sh
 ```
 
 ## Citation
