@@ -1,6 +1,6 @@
 # Advbench
 
-Code and data of the EMNLP 2022 paper **"Why Should Adversarial Perturbations be Imperceptible? Rethink the Research Paradigm in Adversarial NLP"**.
+Code and data of the EMNLP 2022 paper **"Why Should Adversarial Perturbations be Imperceptible? Rethink the Research Paradigm in Adversarial NLP"**[[PDF](https://arxiv.org/pdf/2210.10683v1.pdf)] .
 
 ## Overview
 
@@ -67,4 +67,9 @@ bash scripts/rocket.sh
 ```
 
 ## Citation
+Please kindly cite our paper:
+
+```
+
+```
 
