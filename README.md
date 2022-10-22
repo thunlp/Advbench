@@ -70,6 +70,11 @@ bash scripts/rocket.sh
 Please kindly cite our paper:
 
 ```
-
+@article{chen2022should,
+  title={Why Should Adversarial Perturbations be Imperceptible? Rethink the Research Paradigm in Adversarial NLP},
+  author={Chen, Yangyi and Gao, Hongcheng and Cui, Ganqu and Qi, Fanchao and Huang, Longtao and Liu, Zhiyuan and Sun, Maosong},
+  journal={arXiv preprint arXiv:2210.10683},
+  year={2022}
+}
 ```
 
