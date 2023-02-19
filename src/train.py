@@ -26,15 +26,15 @@ def load_data(data_name,type):
 
 
 
-def evaluaion(loader):
-    model.eval()
+def evaluaion(loader,eval_model):
+    eval_model.eval()
     total_number = 0
     total_correct = 0
     with torch.no_grad():
         for padded_text, attention_masks, labels in loader:
             if torch.cuda.is_available():
                 padded_text, attention_masks, labels = padded_text.cuda(), attention_masks.cuda(), labels.cuda()
-            output = model(padded_text, attention_masks).logits
+            output = eval_model(padded_text, attention_masks).logits
             _, flag = torch.max(output, dim=1)
             total_number += labels.size(0)
             correct = (flag == labels).sum().item()
@@ -42,7 +42,10 @@ def evaluaion(loader):
         acc = total_correct / total_number
         return acc
 
+import copy
+
 def train():
+    best_model = copy.deepcopy(model)
     best_acc = -1
     last_loss = 100000
     try:
@@ -64,10 +67,11 @@ def train():
                 print('loss rise')
             last_loss = avg_loss
             print('finish training, avg_loss: {}, begin to evaluate'.format(avg_loss))
-            dev_acc = evaluaion(test_loader)
+            dev_acc = evaluaion(test_loader,model)
             print('finish evaluation, acc: {}/{}'.format(dev_acc, best_acc))
             if dev_acc > best_acc:
                 best_acc = dev_acc
+                best_model = copy.deepcopy(model)
             print('*' * 89)
 
     except KeyboardInterrupt:
@@ -75,11 +79,11 @@ def train():
         print('Exiting from training early')
 
 
-    test_acc = evaluaion(test_loader)
+    test_acc = evaluaion(test_loader,best_model)
     print('*' * 89)
     print('finish all, test acc: {}'.format(test_acc))
     model_path = base_path+"/model/"
-    torch.save(model, model_path+dataset_name)
+    torch.save(best_model, model_path+dataset_name)
 
 
 if __name__ == '__main__':
@@ -99,7 +103,8 @@ if __name__ == '__main__':
     dataset_name = args.dataset
     bert_type = args.bert_type
     labels = args.labels
-    EPOCHS = 2
+    EPOCHS = 8
+    batch_size_dict = {'LUN':32,'satnews':32 , 'amazon_lb':64 , 'jigsaw':16 , 'EDENCE':32 , 'CGFake': 16, 'HSOL':16 , 'FAS':16, 'assassin':16, 'enron':16}
 
 
 
@@ -112,12 +117,11 @@ if __name__ == '__main__':
     orig_test = load_data(dataset_name,"dev")
 
     pack_util = packDataset_util(bert_type)
-    train_loader = pack_util.get_loader(orig_train, shuffle=True, batch_size=8)
-    test_loader = pack_util.get_loader(orig_test, shuffle=False, batch_size=16)
+    train_loader = pack_util.get_loader(orig_train, shuffle=True, batch_size=batch_size_dict[dataset_name])  # amazon_lb 64(32) 
+    test_loader = pack_util.get_loader(orig_test, shuffle=False, batch_size=128)
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5, weight_decay=0)
-    scheduler = transformers.get_linear_schedule_with_warmup(optimizer,num_warmup_steps=0 * len(train_loader), num_training_steps=EPOCHS * len(train_loader))
-
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5, weight_decay=1e-3)
+    scheduler = transformers.get_linear_schedule_with_warmup(optimizer,num_warmup_steps=0.1 *EPOCHS * len(train_loader), num_training_steps=EPOCHS * len(train_loader))
     train()
 
