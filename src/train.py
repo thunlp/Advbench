@@ -104,7 +104,7 @@ if __name__ == '__main__':
     bert_type = args.bert_type
     labels = args.labels
     EPOCHS = 8
-    batch_size_dict = {'LUN':32,'satnews':32 , 'amazon_lb':64 , 'jigsaw':16 , 'EDENCE':32 , 'CGFake': 16, 'HSOL':16 , 'FAS':16, 'assassin':16, 'enron':16}
+    batch_size_dict = {'LUN':32,'satnews':32 , 'amazon_lb':64 , 'jigsaw':16 , 'EDENCE':32 , 'CGFake': 16, 'HSOL':16 , 'FAS':32, 'assassin':32, 'enron':32}
 
 
 
